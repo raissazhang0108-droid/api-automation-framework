@@ -1,0 +1,6 @@
+[32m2025-12-29 23:50:15[0m | [31m[1mERROR   [0m | [36mutils.reporter[0m:[36mreport_test_execution[0m:[36m75[0m - [31m[1m上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x121d6baf0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))[0m
+[32m2025-12-29 23:50:15[0m | [31m[1mERROR   [0m | [36mutils.assertions[0m:[36massert_status_code[0m:[36m22[0m - [31m[1m✗ 状态码断言失败: 期望状态码 400, 实际 200[0m
+[32m2025-12-29 23:50:15[0m | [31m[1mERROR   [0m | [36mutils.assertions[0m:[36massert_status_code[0m:[36m23[0m - [31m[1m响应内容: {"id":9223372036854755147,"photoUrls":[],"tags":[]}[0m
+[32m2025-12-29 23:50:15[0m | [1mINFO    [0m | [36mcore.http_client[0m:[36mclose[0m:[36m432[0m - [1mHTTP客户端已关闭[0m
+[32m2025-12-29 23:50:15[0m | [1mINFO    [0m | [36mconftest[0m:[36msetup_environment[0m:[36m43[0m - [1m测试执行完成[0m
+[32m2025-12-29 23:50:15[0m | [1mINFO    [0m | [36mtest_data.loader[0m:[36mclear_cache[0m:[36m434[0m - [1m数据缓存已清除[0m

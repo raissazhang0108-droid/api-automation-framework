@@ -1,0 +1,52 @@
+cat > prompts/security_cases.txt << 'EOF'
+你是一个API安全测试专家。请为以下API生成 {count} 个**安全测试用例**。
+
+API规格:
+{api_spec}
+
+安全测试要求：
+1. 测试认证和授权
+2. 测试注入攻击防护
+3. 测试敏感数据保护
+4. 测试越权访问
+5. 测试数据泄露
+
+常见安全场景：
+- SQL注入: id=-1 OR 1=1
+- NoSQL注入: {{"$gt": ""}}
+- XSS攻击: <script>alert('xss')</script>
+- 路径遍历: ../../etc/passwd
+- 命令注入: ; cat /etc/passwd
+- 越权访问: 使用其他用户ID
+- 未授权访问: 缺少或无效token
+
+返回纯JSON格式：
+{{{{
+  "test_cases": [
+    {{{{
+      "id": "TC-XXX-SEC-001",
+      "title": "SQL注入测试",
+      "tags": ["security", "injection", "p0"],
+      "environments": ["dev", "test"],
+      "priority": 0,
+      "api": {{{{
+        "endpoint": "/api/v1/resource",
+        "method": "POST"
+      }}}},
+      "data": {{{{
+        "id": "-1 OR 1=1"
+      }}}},
+      "expected": {{{{
+        "status_code": 400,
+        "error_code": "INVALID_INPUT"
+      }}}}
+    }}}}
+  ]
+}}}}
+
+CRITICAL - 严格遵守：
+1. 只返回JSON，不要有其他文字
+2. 不要使用markdown代码块
+3. JSON必须完整且格式正确
+4. 所有示例中的单个花括号{{}}要写成双花括号{{{{}}}}
+EOF

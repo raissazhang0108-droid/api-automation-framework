@@ -1,0 +1,40 @@
+{
+  "name": "POST /pet/{petId}",
+  "endpoint": "/pet/{petId}",
+  "method": "POST",
+  "summary": "Updates a pet in the store with form data",
+  "description": "",
+  "tags": [
+    "pet"
+  ],
+  "parameters": [
+    {
+      "name": "petId",
+      "in": "path",
+      "required": true,
+      "type": "integer",
+      "description": "ID of pet that needs to be updated"
+    },
+    {
+      "name": "name",
+      "in": "formData",
+      "required": false,
+      "type": "string",
+      "description": "Updated name of the pet"
+    },
+    {
+      "name": "status",
+      "in": "formData",
+      "required": false,
+      "type": "string",
+      "description": "Updated status of the pet"
+    }
+  ],
+  "requestBody": {},
+  "responses": {
+    "405": {
+      "description": "Invalid input",
+      "schema": {}
+    }
+  }
+}

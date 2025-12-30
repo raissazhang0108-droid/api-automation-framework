@@ -1,0 +1,61 @@
+{
+  "test_cases": [
+    {
+      "id": "TC-001",
+      "title": "字段为空返回400",
+      "tags": [
+        "positive"
+      ],
+      "environments": [
+        "dev",
+        "test",
+        "prod"
+      ],
+      "priority": 1,
+      "api": {
+        "endpoint": "/pet",
+        "method": "POST"
+      },
+      "data": {
+        "body": "{\"name\":\"\"}"
+      },
+      "expected": {
+        "status_code": 200,
+        "error_code": "INVALID_INPUT"
+      },
+      "metadata": {
+        "auto_fixed": true,
+        "fix_reason": "API实际接受了该数据",
+        "fix_strategy": "convert_test_type"
+      }
+    },
+    {
+      "id": "TC-002",
+      "title": "字段类型错误返回500",
+      "tags": [
+        "positive"
+      ],
+      "environments": [
+        "dev",
+        "test",
+        "prod"
+      ],
+      "priority": 1,
+      "api": {
+        "endpoint": "/pet",
+        "method": "POST"
+      },
+      "data": {
+        "body": "{\"name\":\"123\"}"
+      },
+      "expected": {
+        "status_code": 200
+      },
+      "metadata": {
+        "auto_fixed": true,
+        "fix_reason": "API实际接受了该数据",
+        "fix_strategy": "convert_test_type"
+      }
+    }
+  ]
+}

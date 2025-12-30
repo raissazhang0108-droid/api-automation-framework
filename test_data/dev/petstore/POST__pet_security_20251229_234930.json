@@ -1,0 +1,79 @@
+{
+  "test_cases": [
+    {
+      "id": "TC-XXX-SEC-001",
+      "title": "SQL注入测试",
+      "tags": [
+        "security",
+        "injection",
+        "p0"
+      ],
+      "environments": [
+        "dev",
+        "test"
+      ],
+      "priority": 0,
+      "api": {
+        "endpoint": "/pet",
+        "method": "POST"
+      },
+      "data": {
+        "body": "{\"id\": \"-1 OR 1=1\"}"
+      },
+      "expected": {
+        "status_code": 400,
+        "error_code": "INVALID_INPUT"
+      }
+    },
+    {
+      "id": "TC-XXX-SEC-002",
+      "title": "NoSQL注入测试",
+      "tags": [
+        "security",
+        "injection",
+        "p0"
+      ],
+      "environments": [
+        "dev",
+        "test"
+      ],
+      "priority": 0,
+      "api": {
+        "endpoint": "/pet",
+        "method": "POST"
+      },
+      "data": {
+        "body": "{\"name\": \"\"}"
+      },
+      "expected": {
+        "status_code": 400,
+        "error_code": "INVALID_INPUT"
+      }
+    },
+    {
+      "id": "TC-XXX-SEC-003",
+      "title": "XSS攻击测试",
+      "tags": [
+        "security",
+        "injection",
+        "p0"
+      ],
+      "environments": [
+        "dev",
+        "test"
+      ],
+      "priority": 0,
+      "api": {
+        "endpoint": "/pet",
+        "method": "POST"
+      },
+      "data": {
+        "body": "{\"name\": \"<script>alert('XSS')</script>\"}"
+      },
+      "expected": {
+        "status_code": 400,
+        "error_code": "INVALID_INPUT"
+      }
+    }
+  ]
+}

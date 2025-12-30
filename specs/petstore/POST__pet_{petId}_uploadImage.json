@@ -1,0 +1,40 @@
+{
+  "name": "POST /pet/{petId}/uploadImage",
+  "endpoint": "/pet/{petId}/uploadImage",
+  "method": "POST",
+  "summary": "uploads an image",
+  "description": "",
+  "tags": [
+    "pet"
+  ],
+  "parameters": [
+    {
+      "name": "petId",
+      "in": "path",
+      "required": true,
+      "type": "integer",
+      "description": "ID of pet to update"
+    },
+    {
+      "name": "additionalMetadata",
+      "in": "formData",
+      "required": false,
+      "type": "string",
+      "description": "Additional data to pass to server"
+    },
+    {
+      "name": "file",
+      "in": "formData",
+      "required": false,
+      "type": "file",
+      "description": "file to upload"
+    }
+  ],
+  "requestBody": {},
+  "responses": {
+    "200": {
+      "description": "successful operation",
+      "schema": {}
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "DELETE /user/{username}",
+  "endpoint": "/user/{username}",
+  "method": "DELETE",
+  "summary": "Delete user",
+  "description": "This can only be done by the logged in user.",
+  "tags": [
+    "user"
+  ],
+  "parameters": [
+    {
+      "name": "username",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The name that needs to be deleted"
+    }
+  ],
+  "requestBody": {},
+  "responses": {
+    "400": {
+      "description": "Invalid username supplied",
+      "schema": {}
+    },
+    "404": {
+      "description": "User not found",
+      "schema": {}
+    }
+  }
+}

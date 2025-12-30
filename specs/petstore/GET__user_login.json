@@ -1,0 +1,37 @@
+{
+  "name": "GET /user/login",
+  "endpoint": "/user/login",
+  "method": "GET",
+  "summary": "Logs user into the system",
+  "description": "",
+  "tags": [
+    "user"
+  ],
+  "parameters": [
+    {
+      "name": "username",
+      "in": "query",
+      "required": true,
+      "type": "string",
+      "description": "The user name for login"
+    },
+    {
+      "name": "password",
+      "in": "query",
+      "required": true,
+      "type": "string",
+      "description": "The password for login in clear text"
+    }
+  ],
+  "requestBody": {},
+  "responses": {
+    "200": {
+      "description": "successful operation",
+      "schema": {}
+    },
+    "400": {
+      "description": "Invalid username/password supplied",
+      "schema": {}
+    }
+  }
+}

@@ -1,0 +1,334 @@
+{
+  "test_cases": [
+    {
+      "id": "TC-PAT-POS-001",
+      "title": "成功场景描述",
+      "tags": [
+        "positive",
+        "smoke",
+        "p0"
+      ],
+      "environments": [
+        "dev",
+        "test",
+        "prod"
+      ],
+      "priority": 0,
+      "api": {
+        "endpoint": "/pet",
+        "method": "POST"
+      },
+      "data": {
+        "name": "Fido",
+        "status": "available",
+        "type": "dog"
+      },
+      "expected": {
+        "status_code": 201,
+        "response_contains": [
+          "id",
+          "name",
+          "status",
+          "type"
+        ]
+      }
+    },
+    {
+      "id": "TC-PAT-POS-002",
+      "title": "不同数据类型的有效值",
+      "tags": [
+        "positive",
+        "smoke",
+        "p0"
+      ],
+      "environments": [
+        "dev",
+        "test",
+        "prod"
+      ],
+      "priority": 0,
+      "api": {
+        "endpoint": "/pet",
+        "method": "POST"
+      },
+      "data": {
+        "name": "Fido",
+        "status": "available",
+        "type": "dog"
+      },
+      "expected": {
+        "status_code": 201,
+        "response_contains": [
+          "id",
+          "name",
+          "status",
+          "type"
+        ]
+      }
+    },
+    {
+      "id": "TC-PAT-POS-003",
+      "title": "边界值内的正常情况",
+      "tags": [
+        "positive",
+        "smoke",
+        "p0"
+      ],
+      "environments": [
+        "dev",
+        "test",
+        "prod"
+      ],
+      "priority": 0,
+      "api": {
+        "endpoint": "/pet",
+        "method": "POST"
+      },
+      "data": {
+        "name": "",
+        "status": "available",
+        "type": ""
+      },
+      "expected": {
+        "status_code": 201,
+        "response_contains": [
+          "id",
+          "name",
+          "status",
+          "type"
+        ]
+      }
+    },
+    {
+      "id": "TC-PAT-POS-004",
+      "title": "可选字段存在/不存在的情况",
+      "tags": [
+        "positive",
+        "smoke",
+        "p0"
+      ],
+      "environments": [
+        "dev",
+        "test",
+        "prod"
+      ],
+      "priority": 0,
+      "api": {
+        "endpoint": "/pet",
+        "method": "POST"
+      },
+      "data": {
+        "name": "",
+        "status": "available",
+        "type": ""
+      },
+      "expected": {
+        "status_code": 201,
+        "response_contains": [
+          "id",
+          "name",
+          "status",
+          "type"
+        ]
+      }
+    },
+    {
+      "id": "TC-PAT-POS-005",
+      "title": "成功场景描述",
+      "tags": [
+        "positive",
+        "smoke",
+        "p0"
+      ],
+      "environments": [
+        "dev",
+        "test",
+        "prod"
+      ],
+      "priority": 0,
+      "api": {
+        "endpoint": "/pet",
+        "method": "POST"
+      },
+      "data": {
+        "name": "Fido",
+        "status": "available",
+        "type": "dog"
+      },
+      "expected": {
+        "status_code": 201,
+        "response_contains": [
+          "id",
+          "name",
+          "status",
+          "type"
+        ]
+      }
+    },
+    {
+      "id": "TC-PAT-POS-006",
+      "title": "不同数据类型的有效值",
+      "tags": [
+        "positive",
+        "smoke",
+        "p0"
+      ],
+      "environments": [
+        "dev",
+        "test",
+        "prod"
+      ],
+      "priority": 0,
+      "api": {
+        "endpoint": "/pet",
+        "method": "POST"
+      },
+      "data": {
+        "name": "Fido",
+        "status": "available",
+        "type": "dog"
+      },
+      "expected": {
+        "status_code": 201,
+        "response_contains": [
+          "id",
+          "name",
+          "status",
+          "type"
+        ]
+      }
+    },
+    {
+      "id": "TC-PAT-POS-007",
+      "title": "边界值内的正常情况",
+      "tags": [
+        "positive",
+        "smoke",
+        "p0"
+      ],
+      "environments": [
+        "dev",
+        "test",
+        "prod"
+      ],
+      "priority": 0,
+      "api": {
+        "endpoint": "/pet",
+        "method": "POST"
+      },
+      "data": {
+        "name": "",
+        "status": "available",
+        "type": ""
+      },
+      "expected": {
+        "status_code": 201,
+        "response_contains": [
+          "id",
+          "name",
+          "status",
+          "type"
+        ]
+      }
+    },
+    {
+      "id": "TC-PAT-POS-008",
+      "title": "可选字段存在/不存在的情况",
+      "tags": [
+        "positive",
+        "smoke",
+        "p0"
+      ],
+      "environments": [
+        "dev",
+        "test",
+        "prod"
+      ],
+      "priority": 0,
+      "api": {
+        "endpoint": "/pet",
+        "method": "POST"
+      },
+      "data": {
+        "name": "",
+        "status": "available",
+        "type": ""
+      },
+      "expected": {
+        "status_code": 201,
+        "response_contains": [
+          "id",
+          "name",
+          "status",
+          "type"
+        ]
+      }
+    },
+    {
+      "id": "TC-PAT-POS-009",
+      "title": "成功场景描述",
+      "tags": [
+        "positive",
+        "smoke",
+        "p0"
+      ],
+      "environments": [
+        "dev",
+        "test",
+        "prod"
+      ],
+      "priority": 0,
+      "api": {
+        "endpoint": "/pet",
+        "method": "POST"
+      },
+      "data": {
+        "name": "Fido",
+        "status": "available",
+        "type": "dog"
+      },
+      "expected": {
+        "status_code": 201,
+        "response_contains": [
+          "id",
+          "name",
+          "status",
+          "type"
+        ]
+      }
+    },
+    {
+      "id": "TC-PAT-POS-010",
+      "title": "不同数据类型的有效值",
+      "tags": [
+        "positive",
+        "smoke",
+        "p0"
+      ],
+      "environments": [
+        "dev",
+        "test",
+        "prod"
+      ],
+      "priority": 0,
+      "api": {
+        "endpoint": "/pet",
+        "method": "POST"
+      },
+      "data": {
+        "name": "Fido",
+        "status": "available",
+        "type": "dog"
+      },
+      "expected": {
+        "status_code": 201,
+        "response_contains": [
+          "id",
+          "name",
+          "status",
+          "type"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "test_cases": [
+    {
+      "id": "TC-001",
+      "title": "字段为空返回400",
+      "tags": [
+        "negative",
+        "regression",
+        "p1"
+      ],
+      "environments": [
+        "dev",
+        "test",
+        "prod"
+      ],
+      "priority": 1,
+      "api": {
+        "endpoint": "/pet",
+        "method": "POST"
+      },
+      "data": {
+        "body": "{\"name\":\"\"}"
+      },
+      "expected": {
+        "status_code": 400,
+        "error_code": "INVALID_INPUT"
+      }
+    },
+    {
+      "id": "TC-002",
+      "title": "字段类型错误返回500",
+      "tags": [
+        "negative",
+        "regression",
+        "p1"
+      ],
+      "environments": [
+        "dev",
+        "test",
+        "prod"
+      ],
+      "priority": 1,
+      "api": {
+        "endpoint": "/pet",
+        "method": "POST"
+      },
+      "data": {
+        "body": "{\"name\":\"123\"}"
+      },
+      "expected": {
+        "status_code": 500
+      }
+    }
+  ]
+}

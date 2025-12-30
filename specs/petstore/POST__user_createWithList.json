@@ -1,0 +1,26 @@
+{
+  "name": "POST /user/createWithList",
+  "endpoint": "/user/createWithList",
+  "method": "POST",
+  "summary": "Creates list of users with given input array",
+  "description": "",
+  "tags": [
+    "user"
+  ],
+  "parameters": [
+    {
+      "name": "body",
+      "in": "body",
+      "required": true,
+      "type": "array",
+      "description": "List of user object"
+    }
+  ],
+  "requestBody": {},
+  "responses": {
+    "default": {
+      "description": "successful operation",
+      "schema": {}
+    }
+  }
+}

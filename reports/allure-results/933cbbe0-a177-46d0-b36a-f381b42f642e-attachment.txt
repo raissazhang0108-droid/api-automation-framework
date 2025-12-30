@@ -1,0 +1,46 @@
+[35mDEBUG   [0m faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.address`.
+[35mDEBUG   [0m faker.factory:factory.py:95 Provider `faker.providers.address` has been localized to `en_US`.
+[35mDEBUG   [0m faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.automotive`.
+[35mDEBUG   [0m faker.factory:factory.py:95 Provider `faker.providers.automotive` has been localized to `en_US`.
+[35mDEBUG   [0m faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.bank`.
+[35mDEBUG   [0m faker.factory:factory.py:86 Specified locale `en_US` is not available for provider `faker.providers.bank`. Locale reset to `en_GB` for this provider.
+[35mDEBUG   [0m faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.barcode`.
+[35mDEBUG   [0m faker.factory:factory.py:95 Provider `faker.providers.barcode` has been localized to `en_US`.
+[35mDEBUG   [0m faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.color`.
+[35mDEBUG   [0m faker.factory:factory.py:95 Provider `faker.providers.color` has been localized to `en_US`.
+[35mDEBUG   [0m faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.company`.
+[35mDEBUG   [0m faker.factory:factory.py:95 Provider `faker.providers.company` has been localized to `en_US`.
+[35mDEBUG   [0m faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.credit_card`.
+[35mDEBUG   [0m faker.factory:factory.py:95 Provider `faker.providers.credit_card` has been localized to `en_US`.
+[35mDEBUG   [0m faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.currency`.
+[35mDEBUG   [0m faker.factory:factory.py:95 Provider `faker.providers.currency` has been localized to `en_US`.
+[35mDEBUG   [0m faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.date_time`.
+[35mDEBUG   [0m faker.factory:factory.py:95 Provider `faker.providers.date_time` has been localized to `en_US`.
+[35mDEBUG   [0m faker.factory:factory.py:106 Provider `faker.providers.emoji` does not feature localization. Specified locale `en_US` is not utilized for this provider.
+[35mDEBUG   [0m faker.factory:factory.py:106 Provider `faker.providers.file` does not feature localization. Specified locale `en_US` is not utilized for this provider.
+[35mDEBUG   [0m faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.geo`.
+[35mDEBUG   [0m faker.factory:factory.py:95 Provider `faker.providers.geo` has been localized to `en_US`.
+[35mDEBUG   [0m faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.internet`.
+[35mDEBUG   [0m faker.factory:factory.py:95 Provider `faker.providers.internet` has been localized to `en_US`.
+[35mDEBUG   [0m faker.factory:factory.py:106 Provider `faker.providers.isbn` does not feature localization. Specified locale `en_US` is not utilized for this provider.
+[35mDEBUG   [0m faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.job`.
+[35mDEBUG   [0m faker.factory:factory.py:95 Provider `faker.providers.job` has been localized to `en_US`.
+[35mDEBUG   [0m faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.lorem`.
+[35mDEBUG   [0m faker.factory:factory.py:95 Provider `faker.providers.lorem` has been localized to `en_US`.
+[35mDEBUG   [0m faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.misc`.
+[35mDEBUG   [0m faker.factory:factory.py:95 Provider `faker.providers.misc` has been localized to `en_US`.
+[35mDEBUG   [0m faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.passport`.
+[35mDEBUG   [0m faker.factory:factory.py:95 Provider `faker.providers.passport` has been localized to `en_US`.
+[35mDEBUG   [0m faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.person`.
+[35mDEBUG   [0m faker.factory:factory.py:95 Provider `faker.providers.person` has been localized to `en_US`.
+[35mDEBUG   [0m faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.phone_number`.
+[35mDEBUG   [0m faker.factory:factory.py:95 Provider `faker.providers.phone_number` has been localized to `en_US`.
+[35mDEBUG   [0m faker.factory:factory.py:106 Provider `faker.providers.profile` does not feature localization. Specified locale `en_US` is not utilized for this provider.
+[35mDEBUG   [0m faker.factory:factory.py:106 Provider `faker.providers.python` does not feature localization. Specified locale `en_US` is not utilized for this provider.
+[35mDEBUG   [0m faker.factory:factory.py:106 Provider `faker.providers.sbn` does not feature localization. Specified locale `en_US` is not utilized for this provider.
+[35mDEBUG   [0m faker.factory:factory.py:76 Looking for locale `en_US` in provider `faker.providers.ssn`.
+[35mDEBUG   [0m faker.factory:factory.py:95 Provider `faker.providers.ssn` has been localized to `en_US`.
+[35mDEBUG   [0m faker.factory:factory.py:106 Provider `faker.providers.user_agent` does not feature localization. Specified locale `en_US` is not utilized for this provider.
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:1052 Starting new HTTPS connection (1): petstore.swagger.io:443
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:546 https://petstore.swagger.io:443 "POST /v2/pet HTTP/1.1" 200 None
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:1052 Starting new HTTPS connection (1): dev-monitor.example.com:443

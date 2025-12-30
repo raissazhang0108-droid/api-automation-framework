@@ -1,0 +1,30 @@
+{
+  "name": "GET /pet/findByStatus",
+  "endpoint": "/pet/findByStatus",
+  "method": "GET",
+  "summary": "Finds Pets by status",
+  "description": "Multiple status values can be provided with comma separated strings",
+  "tags": [
+    "pet"
+  ],
+  "parameters": [
+    {
+      "name": "status",
+      "in": "query",
+      "required": true,
+      "type": "array",
+      "description": "Status values that need to be considered for filter"
+    }
+  ],
+  "requestBody": {},
+  "responses": {
+    "200": {
+      "description": "successful operation",
+      "schema": {}
+    },
+    "400": {
+      "description": "Invalid status value",
+      "schema": {}
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "name": "GET /user/{username}",
+  "endpoint": "/user/{username}",
+  "method": "GET",
+  "summary": "Get user by user name",
+  "description": "",
+  "tags": [
+    "user"
+  ],
+  "parameters": [
+    {
+      "name": "username",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The name that needs to be fetched. Use user1 for testing. "
+    }
+  ],
+  "requestBody": {},
+  "responses": {
+    "200": {
+      "description": "successful operation",
+      "schema": {}
+    },
+    "400": {
+      "description": "Invalid username supplied",
+      "schema": {}
+    },
+    "404": {
+      "description": "User not found",
+      "schema": {}
+    }
+  }
+}

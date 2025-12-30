@@ -1,0 +1,809 @@
+2025-12-29 16:05:50 | ERROR    | __main__:generate:166 - 生成用例时发生错误
+Traceback (most recent call last):
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/tools/generate_cases.py", line 394, in <module>
+    main()
+    └ <function main at 0x1032fe8c0>
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/tools/generate_cases.py", line 390, in main
+    cli()
+    └ <Group cli>
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 1157, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function BaseCommand.main at 0x1034fcca0>
+           └ <Group cli>
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 1078, in main
+    rv = self.invoke(ctx)
+         │    │      └ <click.core.Context object at 0x103327fd0>
+         │    └ <function MultiCommand.invoke at 0x1034fdc60>
+         └ <Group cli>
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 1688, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <click.core.Context object at 0x10582d570>
+           │               │       │       └ <function Command.invoke at 0x1034fd750>
+           │               │       └ <Command generate>
+           │               └ <click.core.Context object at 0x10582d570>
+           └ <function MultiCommand.invoke.<locals>._process_result at 0x105865870>
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 1434, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'provider': 'ollama', 'model': 'llama3.2', 'spec_file': 'specs/petstore/POST__pet.json', 'type': 'positive', 'count': 10, 'a...
+           │   │      │    │           └ <click.core.Context object at 0x10582d570>
+           │   │      │    └ <function generate at 0x105865bd0>
+           │   │      └ <Command generate>
+           │   └ <function Context.invoke at 0x1034fc4c0>
+           └ <click.core.Context object at 0x10582d570>
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 783, in invoke
+    return __callback(*args, **kwargs)
+                       │       └ {'provider': 'ollama', 'model': 'llama3.2', 'spec_file': 'specs/petstore/POST__pet.json', 'type': 'positive', 'count': 10, 'a...
+                       └ ()
+
+> File "/Users/bytedance/Documents/code/api-automation-framework/tools/generate_cases.py", line 124, in generate
+    result = generator.generate(api_spec, type, count)
+             │         │        │         │     └ 10
+             │         │        │         └ 'positive'
+             │         │        └ {'name': 'POST /pet', 'endpoint': '/pet', 'method': 'POST', 'summary': 'Add a new pet to the store', 'description': '', 'tags...
+             │         └ <function CaseGenerator.generate at 0x105865630>
+             └ <ai_agent.case_generator.CaseGenerator object at 0x105870340>
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/ai_agent/case_generator.py", line 71, in generate
+    return self.agent.generate_cases(api_spec, case_type, count)
+           │    │     │              │         │          └ 10
+           │    │     │              │         └ 'positive'
+           │    │     │              └ {'name': 'POST /pet', 'endpoint': '/pet', 'method': 'POST', 'summary': 'Add a new pet to the store', 'description': '', 'tags...
+           │    │     └ <function OllamaAgent.generate_cases at 0x1058651b0>
+           │    └ <ai_agent.ollama_agent.OllamaAgent object at 0x1058702b0>
+           └ <ai_agent.case_generator.CaseGenerator object at 0x105870340>
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/ai_agent/ollama_agent.py", line 70, in generate_cases
+    prompt = prompt_template.format(
+             │               └ <method 'format' of 'str' objects>
+             └ '你是一个专业的API测试专家。请为以下API生成 {count} 个**正向测试用例**。\n\nAPI规格:\n{api_spec}\n\n正向测试要求：\n1. 测试正常的业务流程\n2. 使用有效的输入数据\n3. 验证成功的响应（2xx状态...
+
+KeyError: '\n  "test_cases"'
+2025-12-29 16:30:06 | ERROR    | core.auth_manager:_fetch_token:107 - Token获取失败: HTTPSConnectionPool(host='dev-api.radai.com', port=443): Max retries exceeded with url: /auth/login (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x109aec250>: Failed to resolve 'dev-api.radai.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 16:33:46 | ERROR    | core.auth_manager:_fetch_token:107 - Token获取失败: HTTPSConnectionPool(host='petstore.swagger.io', port=443): Max retries exceeded with url: /v2/auth/login (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1017)')))
+2025-12-29 16:38:27 | ERROR    | core.auth_manager:_fetch_token:107 - Token获取失败: HTTPSConnectionPool(host='petstore.swagger.io', port=443): Max retries exceeded with url: /v2/auth/login (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1017)')))
+2025-12-29 17:56:31 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1060d7130>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 17:56:31 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 201, 实际 200
+2025-12-29 17:56:31 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9222968140497183715,"name":"Fido","photoUrls":[],"tags":[],"status":"available"}
+2025-12-29 17:56:31 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x10723ab00>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 17:56:31 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 201, 实际 200
+2025-12-29 17:56:31 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9222968140497183716,"name":"Fido","photoUrls":[],"tags":[],"status":"available"}
+2025-12-29 17:56:31 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x10724e890>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 17:56:31 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 201, 实际 200
+2025-12-29 17:56:31 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9222968140497183717,"name":"","photoUrls":[],"tags":[],"status":"available"}
+2025-12-29 17:56:31 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x10724d5a0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 17:56:31 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 201, 实际 200
+2025-12-29 17:56:31 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9222968140497183718,"name":"","photoUrls":[],"tags":[],"status":"available"}
+2025-12-29 17:56:31 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1060d6140>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 17:56:31 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 201, 实际 200
+2025-12-29 17:56:31 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9222968140497183719,"name":"Fido","photoUrls":[],"tags":[],"status":"available"}
+2025-12-29 17:58:08 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x107ae30d0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 17:58:09 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x110336b00>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 17:58:09 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x11034e890>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 17:58:09 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x11034fe20>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 17:58:09 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x110349c00>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:00:26 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1034af040>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:00:26 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x10363eb00>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:00:26 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x10365a020>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:00:26 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x10365b5e0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:00:26 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103654610>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:00:27 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x10363ebf0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:00:27 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1034af520>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:00:27 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1034ae680>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:00:27 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1036579d0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:00:27 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103682470>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:02:55 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x107f3b040>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:02:55 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x107f3a590>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:02:55 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x107f38b50>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:02:55 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x107f38850>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:02:56 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x107f3a6b0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:02:56 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x11009eda0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:02:56 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x107f390c0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:02:56 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x110715a20>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:02:56 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x107f38cd0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:02:56 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1107163b0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:03:47 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1033b2ec0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:03:47 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1033b2410>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:03:47 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1033b09d0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:03:47 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1033b0550>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:03:47 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1033b2890>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:03:47 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1034aefb0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:03:47 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1033b09d0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:03:47 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103525750>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:03:47 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1033b1060>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:03:48 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1035266e0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:05:25 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x107a10250>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:05:25 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x107a11270>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:05:25 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1079eba00>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:05:25 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1079eaa40>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:05:25 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x107a10580>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:05:25 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x11a92d120>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:05:25 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1079ead70>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:05:25 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x11a92d870>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:05:25 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1079e9e10>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:05:26 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x11a92d000>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:07:31 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x102a7bac0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:07:31 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x102a7ae30>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:07:31 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x102aa34c0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:07:31 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x102aa2e90>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:07:31 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x102a7ba30>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:07:31 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103169090>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:07:31 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x102aa1c00>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:07:31 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103169780>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:07:31 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x102aa2e00>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 18:07:31 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103168dc0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 20:53:12 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103470550>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 20:53:12 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103470040>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 20:53:13 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1033f8670>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 20:53:13 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1033f9450>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 20:53:13 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103471900>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 20:53:13 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1042292a0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 20:53:13 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1033fa0b0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 20:53:13 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x104228c10>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 20:53:13 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1033f8d90>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 20:53:14 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1042290c0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:04:55 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103477a90>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:04:56 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103477dc0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:04:56 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x10349f850>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:04:56 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x10349eb60>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:04:56 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1034766e0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:04:56 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103b5d2d0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:04:56 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x10349e1a0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:04:56 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103b5cc40>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:04:56 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x10349f670>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:04:56 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103b5d0f0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:08:06 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x10382bb20>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:08:06 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x10382add0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:08:06 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103857c40>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:08:06 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103856e60>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:08:06 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x10382a770>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:08:06 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x104a292a0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:08:06 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1038560b0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:08:06 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x104a28c10>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:08:06 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103857520>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:08:07 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x104a28af0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:09:19 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1075b44f0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:09:19 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1075b5240>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:09:19 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x10753c6d0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:09:19 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x10753d4b0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:09:19 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1075b58a0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:09:19 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1076592a0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:09:19 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x10753e260>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:09:20 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x107658c10>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:09:20 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x10753cdf0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:09:20 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x107658af0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:44:57 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x105b74c40>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:44:58 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x105b755d0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:44:58 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x105c20400>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:44:58 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x105af4460>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:44:58 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x105c20d30>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:44:58 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x105c22800>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:44:58 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x105af4a60>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:44:58 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x105c20e80>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:44:58 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x105af7070>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:44:58 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x105c20460>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:45:13 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1040c4df0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:45:13 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1040c5660>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:45:13 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x104440430>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:45:13 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x10404c6d0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:45:13 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x104440670>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:45:14 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x104442830>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:45:14 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x10404caf0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:45:14 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x104440ee0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:45:14 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x10404c100>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 21:45:14 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x104440490>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 22:23:37 | ERROR    | __main__:generate:293 - 生成用例时发生错误
+Traceback (most recent call last):
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/tools/generate_cases.py", line 306, in <module>
+    main()
+    └ <function main at 0x101329e10>
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/tools/generate_cases.py", line 302, in main
+    cli()
+    └ <Group cli>
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 1157, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function BaseCommand.main at 0x101310ca0>
+           └ <Group cli>
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 1078, in main
+    rv = self.invoke(ctx)
+         │    │      └ <click.core.Context object at 0x1010f3fd0>
+         │    └ <function MultiCommand.invoke at 0x101311c60>
+         └ <Group cli>
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 1688, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <click.core.Context object at 0x104957a00>
+           │               │       │       └ <function Command.invoke at 0x101311750>
+           │               │       └ <Command generate>
+           │               └ <click.core.Context object at 0x104957a00>
+           └ <function MultiCommand.invoke.<locals>._process_result at 0x10498d870>
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 1434, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'provider': 'ollama', 'model': 'llama3.2', 'spec_file': 'specs/petstore/POST__pet.json', 'type': 'negative', 'count': 10, 'o...
+           │   │      │    │           └ <click.core.Context object at 0x104957a00>
+           │   │      │    └ <function generate at 0x10498dcf0>
+           │   │      └ <Command generate>
+           │   └ <function Context.invoke at 0x1013104c0>
+           └ <click.core.Context object at 0x104957a00>
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 783, in invoke
+    return __callback(*args, **kwargs)
+                       │       └ {'provider': 'ollama', 'model': 'llama3.2', 'spec_file': 'specs/petstore/POST__pet.json', 'type': 'negative', 'count': 10, 'o...
+                       └ ()
+
+> File "/Users/bytedance/Documents/code/api-automation-framework/tools/generate_cases.py", line 235, in generate
+    result = generator.generate(api_spec, type, count)
+             │         │        │         │     └ 10
+             │         │        │         └ 'negative'
+             │         │        └ {'name': 'POST /pet', 'endpoint': '/pet', 'method': 'POST', 'summary': 'Add a new pet to the store', 'description': '', 'tags...
+             │         └ <function CaseGenerator.generate at 0x10498d630>
+             └ <ai_agent.case_generator.CaseGenerator object at 0x104957fa0>
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/ai_agent/case_generator.py", line 71, in generate
+    return self.agent.generate_cases(api_spec, case_type, count)
+           │    │     │              │         │          └ 10
+           │    │     │              │         └ 'negative'
+           │    │     │              └ {'name': 'POST /pet', 'endpoint': '/pet', 'method': 'POST', 'summary': 'Add a new pet to the store', 'description': '', 'tags...
+           │    │     └ <function OllamaAgent.generate_cases at 0x10498d1b0>
+           │    └ <ai_agent.ollama_agent.OllamaAgent object at 0x104957e80>
+           └ <ai_agent.case_generator.CaseGenerator object at 0x104957fa0>
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/ai_agent/ollama_agent.py", line 70, in generate_cases
+    prompt = prompt_template.format(
+             │               └ <method 'format' of 'str' objects>
+             └ '你是一个专业的API测试专家。请为以下API生成 {count} 个**负向测试用例**。\n\nAPI规格:\n{api_spec}\n\n负向测试要求：\n1. 测试异常情况和错误处理\n2. 使用无效的输入数据\n3. 验证错误响应（4xx,...
+
+KeyError: '\n  "test_cases"'
+2025-12-29 22:28:54 | ERROR    | ai_agent.ollama_agent:generate_cases:120 - JSON解析失败: Expecting ',' delimiter: line 36 column 20 (char 800)
+2025-12-29 22:28:54 | ERROR    | ai_agent.ollama_agent:generate_cases:121 - 原始响应: 下面是10个负向测试用例：
+
+```json
+{
+  "test_cases": [
+    {
+      "id": "TC-PT-NEG-001",
+      "title": "字段为空返回400",
+      "tags": ["negative", "regression", "p1"],
+      "data": {
+        "name": "",
+        "age": null,
+        "pet_id": 123
+      },
+      "expected": {
+        "status_code": 400,
+        "error_code": "INVALID_INPUT"
+      }
+    },
+    {
+      "id": "TC-PT-NEG-002",
+      "title": "字段类型错误返回400",
+      "tags": ["negative", "regression", "p1"],
+      "data": {
+        "name": "12345678901...
+2025-12-29 22:28:54 | ERROR    | __main__:generate:293 - 生成用例时发生错误
+Traceback (most recent call last):
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/tools/generate_cases.py", line 306, in <module>
+    main()
+    └ <function main at 0x102f81e10>
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/tools/generate_cases.py", line 302, in main
+    cli()
+    └ <Group cli>
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 1157, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function BaseCommand.main at 0x102f68ca0>
+           └ <Group cli>
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 1078, in main
+    rv = self.invoke(ctx)
+         │    │      └ <click.core.Context object at 0x102987fd0>
+         │    └ <function MultiCommand.invoke at 0x102f69c60>
+         └ <Group cli>
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 1688, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <click.core.Context object at 0x1063579a0>
+           │               │       │       └ <function Command.invoke at 0x102f69750>
+           │               │       └ <Command generate>
+           │               └ <click.core.Context object at 0x1063579a0>
+           └ <function MultiCommand.invoke.<locals>._process_result at 0x106391870>
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 1434, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'provider': 'ollama', 'model': 'llama3.2', 'spec_file': 'specs/petstore/POST__pet.json', 'type': 'negative', 'count': 10, 'o...
+           │   │      │    │           └ <click.core.Context object at 0x1063579a0>
+           │   │      │    └ <function generate at 0x106391cf0>
+           │   │      └ <Command generate>
+           │   └ <function Context.invoke at 0x102f684c0>
+           └ <click.core.Context object at 0x1063579a0>
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 783, in invoke
+    return __callback(*args, **kwargs)
+                       │       └ {'provider': 'ollama', 'model': 'llama3.2', 'spec_file': 'specs/petstore/POST__pet.json', 'type': 'negative', 'count': 10, 'o...
+                       └ ()
+
+> File "/Users/bytedance/Documents/code/api-automation-framework/tools/generate_cases.py", line 235, in generate
+    result = generator.generate(api_spec, type, count)
+             │         │        │         │     └ 10
+             │         │        │         └ 'negative'
+             │         │        └ {'name': 'POST /pet', 'endpoint': '/pet', 'method': 'POST', 'summary': 'Add a new pet to the store', 'description': '', 'tags...
+             │         └ <function CaseGenerator.generate at 0x106391630>
+             └ <ai_agent.case_generator.CaseGenerator object at 0x106357fa0>
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/ai_agent/case_generator.py", line 71, in generate
+    return self.agent.generate_cases(api_spec, case_type, count)
+           │    │     │              │         │          └ 10
+           │    │     │              │         └ 'negative'
+           │    │     │              └ {'name': 'POST /pet', 'endpoint': '/pet', 'method': 'POST', 'summary': 'Add a new pet to the store', 'description': '', 'tags...
+           │    │     └ <function OllamaAgent.generate_cases at 0x1063911b0>
+           │    └ <ai_agent.ollama_agent.OllamaAgent object at 0x106357ee0>
+           └ <ai_agent.case_generator.CaseGenerator object at 0x106357fa0>
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/ai_agent/ollama_agent.py", line 107, in generate_cases
+    result = json.loads(json_str)
+             │    │     └ '{\n  "test_cases": [\n    {\n      "id": "TC-PT-NEG-001",\n      "title": "字段为空返回400",\n      "tags": ["negative", "regressi...
+             │    └ <function loads at 0x102f81240>
+             └ <module 'json' from '/opt/homebrew/Cellar/python@3.10/3.10.19_1/Frameworks/Python.framework/Versions/3.10/lib/python3.10/json...
+
+  File "/opt/homebrew/Cellar/python@3.10/3.10.19_1/Frameworks/Python.framework/Versions/3.10/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           │                │      └ '{\n  "test_cases": [\n    {\n      "id": "TC-PT-NEG-001",\n      "title": "字段为空返回400",\n      "tags": ["negative", "regressi...
+           │                └ <function JSONDecoder.decode at 0x102f80af0>
+           └ <json.decoder.JSONDecoder object at 0x102987910>
+
+  File "/opt/homebrew/Cellar/python@3.10/3.10.19_1/Frameworks/Python.framework/Versions/3.10/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               │    │          │      │  └ '{\n  "test_cases": [\n    {\n      "id": "TC-PT-NEG-001",\n      "title": "字段为空返回400",\n      "tags": ["negative", "regressi...
+               │    │          │      └ <built-in method match of re.Pattern object at 0x102a34a00>
+               │    │          └ '{\n  "test_cases": [\n    {\n      "id": "TC-PT-NEG-001",\n      "title": "字段为空返回400",\n      "tags": ["negative", "regressi...
+               │    └ <function JSONDecoder.raw_decode at 0x102f80b80>
+               └ <json.decoder.JSONDecoder object at 0x102987910>
+
+  File "/opt/homebrew/Cellar/python@3.10/3.10.19_1/Frameworks/Python.framework/Versions/3.10/lib/python3.10/json/decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               │    │         │  └ 0
+               │    │         └ '{\n  "test_cases": [\n    {\n      "id": "TC-PT-NEG-001",\n      "title": "字段为空返回400",\n      "tags": ["negative", "regressi...
+               │    └ <_json.Scanner object at 0x102f7cca0>
+               └ <json.decoder.JSONDecoder object at 0x102987910>
+
+json.decoder.JSONDecodeError: Expecting ',' delimiter: line 36 column 20 (char 800)
+2025-12-29 22:33:22 | ERROR    | __main__:generate:276 - 生成测试文件时发生错误
+Traceback (most recent call last):
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/tools/generate_cases.py", line 306, in <module>
+    main()
+    └ <function main at 0x103649e10>
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/tools/generate_cases.py", line 302, in main
+    cli()
+    └ <Group cli>
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 1157, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function BaseCommand.main at 0x103630ca0>
+           └ <Group cli>
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 1078, in main
+    rv = self.invoke(ctx)
+         │    │      └ <click.core.Context object at 0x102f23fd0>
+         │    └ <function MultiCommand.invoke at 0x103631c60>
+         └ <Group cli>
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 1688, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <click.core.Context object at 0x108a539d0>
+           │               │       │       └ <function Command.invoke at 0x103631750>
+           │               │       └ <Command generate>
+           │               └ <click.core.Context object at 0x108a539d0>
+           └ <function MultiCommand.invoke.<locals>._process_result at 0x108a8d870>
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 1434, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'provider': 'ollama', 'model': 'llama3.2', 'spec_file': 'specs/petstore/POST__pet.json', 'type': 'negative', 'count': 2, 'ou...
+           │   │      │    │           └ <click.core.Context object at 0x108a539d0>
+           │   │      │    └ <function generate at 0x108a8dcf0>
+           │   │      └ <Command generate>
+           │   └ <function Context.invoke at 0x1036304c0>
+           └ <click.core.Context object at 0x108a539d0>
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 783, in invoke
+    return __callback(*args, **kwargs)
+                       │       └ {'provider': 'ollama', 'model': 'llama3.2', 'spec_file': 'specs/petstore/POST__pet.json', 'type': 'negative', 'count': 2, 'ou...
+                       └ ()
+
+> File "/Users/bytedance/Documents/code/api-automation-framework/tools/generate_cases.py", line 266, in generate
+    test_file = generate_test_file(output_path.parent, spec_file, type)
+                │                  │           │       │          └ 'negative'
+                │                  │           │       └ 'specs/petstore/POST__pet.json'
+                │                  │           └ <property object at 0x1036a7880>
+                │                  └ PosixPath('test_data/dev/petstore/POST__pet_negative_20251229_223322.json')
+                └ True
+
+TypeError: 'bool' object is not callable
+2025-12-29 22:48:21 | ERROR    | ai_agent.ollama_agent:generate_cases:120 - JSON解析失败: Extra data: line 23 column 1 (char 432)
+2025-12-29 22:48:21 | ERROR    | ai_agent.ollama_agent:generate_cases:121 - 原始响应: 以下是两个负向测试用例：
+
+**负向测试用例1：字段为空返回400**
+
+```json
+{
+  "test_cases": [
+    {
+      "id": "TC-POST-PET-NEG-001",
+      "title": "字段为空返回400",
+      "tags": ["negative", "regression", "p1"],
+      "environments": ["dev", "test", "prod"],
+      "priority": 1,
+      "api": {
+        "endpoint": "/pet",
+        "method": "POST"
+      },
+      "data": {
+        "body": {}
+      },
+      "expected": {
+        "status_code": 400,
+        "error_code": "INVALID_INPUT"
+      }
+    }
+  ]
+}
+```
+
+**负向测试用例2：无效的输入数据返...
+2025-12-29 22:48:21 | ERROR    | __main__:generate:396 - 生成用例时发生错误
+Traceback (most recent call last):
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/tools/generate_cases.py", line 409, in <module>
+    main()
+    └ <function main at 0x100b36a70>
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/tools/generate_cases.py", line 405, in main
+    cli()
+    └ <Group cli>
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 1157, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function BaseCommand.main at 0x101934ca0>
+           └ <Group cli>
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 1078, in main
+    rv = self.invoke(ctx)
+         │    │      └ <click.core.Context object at 0x100b4bfd0>
+         │    └ <function MultiCommand.invoke at 0x101935c60>
+         └ <Group cli>
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 1688, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <click.core.Context object at 0x10603e4d0>
+           │               │       │       └ <function Command.invoke at 0x101935750>
+           │               │       └ <Command generate>
+           │               └ <click.core.Context object at 0x10603e4d0>
+           └ <function MultiCommand.invoke.<locals>._process_result at 0x106095870>
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 1434, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'provider': 'ollama', 'model': 'llama3.2', 'spec_file': 'specs/petstore/POST__pet.json', 'type': 'negative', 'count': 2, 'ou...
+           │   │      │    │           └ <click.core.Context object at 0x10603e4d0>
+           │   │      │    └ <function generate at 0x106095cf0>
+           │   │      └ <Command generate>
+           │   └ <function Context.invoke at 0x1019344c0>
+           └ <click.core.Context object at 0x10603e4d0>
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 783, in invoke
+    return __callback(*args, **kwargs)
+                       │       └ {'provider': 'ollama', 'model': 'llama3.2', 'spec_file': 'specs/petstore/POST__pet.json', 'type': 'negative', 'count': 2, 'ou...
+                       └ ()
+
+> File "/Users/bytedance/Documents/code/api-automation-framework/tools/generate_cases.py", line 337, in generate
+    result = generator.generate(api_spec, type, count)
+             │         │        │         │     └ 2
+             │         │        │         └ 'negative'
+             │         │        └ {'name': 'POST /pet', 'endpoint': '/pet', 'method': 'POST', 'summary': 'Add a new pet to the store', 'description': '', 'tags...
+             │         └ <function CaseGenerator.generate at 0x106095630>
+             └ <ai_agent.case_generator.CaseGenerator object at 0x1060811e0>
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/ai_agent/case_generator.py", line 71, in generate
+    return self.agent.generate_cases(api_spec, case_type, count)
+           │    │     │              │         │          └ 2
+           │    │     │              │         └ 'negative'
+           │    │     │              └ {'name': 'POST /pet', 'endpoint': '/pet', 'method': 'POST', 'summary': 'Add a new pet to the store', 'description': '', 'tags...
+           │    │     └ <function OllamaAgent.generate_cases at 0x1060951b0>
+           │    └ <ai_agent.ollama_agent.OllamaAgent object at 0x106081150>
+           └ <ai_agent.case_generator.CaseGenerator object at 0x1060811e0>
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/ai_agent/ollama_agent.py", line 107, in generate_cases
+    result = json.loads(json_str)
+             │    │     └ '{\n  "test_cases": [\n    {\n      "id": "TC-POST-PET-NEG-001",\n      "title": "字段为空返回400",\n      "tags": ["negative", "re...
+             │    └ <function loads at 0x101949240>
+             └ <module 'json' from '/opt/homebrew/Cellar/python@3.10/3.10.19_1/Frameworks/Python.framework/Versions/3.10/lib/python3.10/json...
+
+  File "/opt/homebrew/Cellar/python@3.10/3.10.19_1/Frameworks/Python.framework/Versions/3.10/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           │                │      └ '{\n  "test_cases": [\n    {\n      "id": "TC-POST-PET-NEG-001",\n      "title": "字段为空返回400",\n      "tags": ["negative", "re...
+           │                └ <function JSONDecoder.decode at 0x101948af0>
+           └ <json.decoder.JSONDecoder object at 0x100b4b910>
+
+  File "/opt/homebrew/Cellar/python@3.10/3.10.19_1/Frameworks/Python.framework/Versions/3.10/lib/python3.10/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+          │                             │  └ 432
+          │                             └ '{\n  "test_cases": [\n    {\n      "id": "TC-POST-PET-NEG-001",\n      "title": "字段为空返回400",\n      "tags": ["negative", "re...
+          └ <class 'json.decoder.JSONDecodeError'>
+
+json.decoder.JSONDecodeError: Extra data: line 23 column 1 (char 432)
+2025-12-29 22:48:59 | ERROR    | ai_agent.ollama_agent:generate_cases:120 - JSON解析失败: Extra data: line 23 column 1 (char 432)
+2025-12-29 22:48:59 | ERROR    | ai_agent.ollama_agent:generate_cases:121 - 原始响应: 根据API规格和负向测试要求，生成以下2个负向测试用例：
+
+**用例1：字段为空返回400**
+
+```json
+{
+  "test_cases": [
+    {
+      "id": "TC-POST-PET-NEG-001",
+      "title": "字段为空返回400",
+      "tags": ["negative", "regression", "p1"],
+      "environments": ["dev", "test", "prod"],
+      "priority": 1,
+      "api": {
+        "endpoint": "/pet",
+        "method": "POST"
+      },
+      "data": {
+        "body": {}
+      },
+      "expected": {
+        "status_code": 400,
+        "error_code": "INVALID_INPUT"
+      }
+    }
+  ]
+}
+```
+
+**用例2：...
+2025-12-29 22:48:59 | ERROR    | __main__:generate:396 - 生成用例时发生错误
+Traceback (most recent call last):
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/tools/generate_cases.py", line 409, in <module>
+    main()
+    └ <function main at 0x100fd2a70>
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/tools/generate_cases.py", line 405, in main
+    cli()
+    └ <Group cli>
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 1157, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function BaseCommand.main at 0x101734ca0>
+           └ <Group cli>
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 1078, in main
+    rv = self.invoke(ctx)
+         │    │      └ <click.core.Context object at 0x100fe7fd0>
+         │    └ <function MultiCommand.invoke at 0x101735c60>
+         └ <Group cli>
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 1688, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <click.core.Context object at 0x10553e4a0>
+           │               │       │       └ <function Command.invoke at 0x101735750>
+           │               │       └ <Command generate>
+           │               └ <click.core.Context object at 0x10553e4a0>
+           └ <function MultiCommand.invoke.<locals>._process_result at 0x105595870>
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 1434, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'provider': 'ollama', 'model': 'llama3.2', 'spec_file': 'specs/petstore/POST__pet.json', 'type': 'negative', 'count': 2, 'ou...
+           │   │      │    │           └ <click.core.Context object at 0x10553e4a0>
+           │   │      │    └ <function generate at 0x105595cf0>
+           │   │      └ <Command generate>
+           │   └ <function Context.invoke at 0x1017344c0>
+           └ <click.core.Context object at 0x10553e4a0>
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 783, in invoke
+    return __callback(*args, **kwargs)
+                       │       └ {'provider': 'ollama', 'model': 'llama3.2', 'spec_file': 'specs/petstore/POST__pet.json', 'type': 'negative', 'count': 2, 'ou...
+                       └ ()
+
+> File "/Users/bytedance/Documents/code/api-automation-framework/tools/generate_cases.py", line 337, in generate
+    result = generator.generate(api_spec, type, count)
+             │         │        │         │     └ 2
+             │         │        │         └ 'negative'
+             │         │        └ {'name': 'POST /pet', 'endpoint': '/pet', 'method': 'POST', 'summary': 'Add a new pet to the store', 'description': '', 'tags...
+             │         └ <function CaseGenerator.generate at 0x105595630>
+             └ <ai_agent.case_generator.CaseGenerator object at 0x1055811b0>
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/ai_agent/case_generator.py", line 71, in generate
+    return self.agent.generate_cases(api_spec, case_type, count)
+           │    │     │              │         │          └ 2
+           │    │     │              │         └ 'negative'
+           │    │     │              └ {'name': 'POST /pet', 'endpoint': '/pet', 'method': 'POST', 'summary': 'Add a new pet to the store', 'description': '', 'tags...
+           │    │     └ <function OllamaAgent.generate_cases at 0x1055951b0>
+           │    └ <ai_agent.ollama_agent.OllamaAgent object at 0x105581120>
+           └ <ai_agent.case_generator.CaseGenerator object at 0x1055811b0>
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/ai_agent/ollama_agent.py", line 107, in generate_cases
+    result = json.loads(json_str)
+             │    │     └ '{\n  "test_cases": [\n    {\n      "id": "TC-POST-PET-NEG-001",\n      "title": "字段为空返回400",\n      "tags": ["negative", "re...
+             │    └ <function loads at 0x101749240>
+             └ <module 'json' from '/opt/homebrew/Cellar/python@3.10/3.10.19_1/Frameworks/Python.framework/Versions/3.10/lib/python3.10/json...
+
+  File "/opt/homebrew/Cellar/python@3.10/3.10.19_1/Frameworks/Python.framework/Versions/3.10/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           │                │      └ '{\n  "test_cases": [\n    {\n      "id": "TC-POST-PET-NEG-001",\n      "title": "字段为空返回400",\n      "tags": ["negative", "re...
+           │                └ <function JSONDecoder.decode at 0x101748af0>
+           └ <json.decoder.JSONDecoder object at 0x100fe7910>
+
+  File "/opt/homebrew/Cellar/python@3.10/3.10.19_1/Frameworks/Python.framework/Versions/3.10/lib/python3.10/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+          │                             │  └ 432
+          │                             └ '{\n  "test_cases": [\n    {\n      "id": "TC-POST-PET-NEG-001",\n      "title": "字段为空返回400",\n      "tags": ["negative", "re...
+          └ <class 'json.decoder.JSONDecodeError'>
+
+json.decoder.JSONDecodeError: Extra data: line 23 column 1 (char 432)
+2025-12-29 22:57:51 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1050d8850>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 22:57:51 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 400, 实际 200
+2025-12-29 22:57:51 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015164,"photoUrls":[],"tags":[]}
+2025-12-29 22:57:51 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x105472710>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 22:57:51 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 400, 实际 200
+2025-12-29 22:57:51 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015165,"photoUrls":[],"tags":[]}
+2025-12-29 22:57:51 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x105473ac0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 22:57:51 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 400, 实际 200
+2025-12-29 22:57:51 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015166,"photoUrls":[],"tags":[]}
+2025-12-29 22:57:51 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x105472500>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 22:57:51 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 500, 实际 200
+2025-12-29 22:57:51 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015167,"photoUrls":[],"tags":[]}
+2025-12-29 23:09:55 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1089c67a0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:09:55 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 400, 实际 200
+2025-12-29 23:09:55 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015286,"photoUrls":[],"tags":[]}
+2025-12-29 23:09:55 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x108d4ad10>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:09:55 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 400, 实际 200
+2025-12-29 23:09:55 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015287,"photoUrls":[],"tags":[]}
+2025-12-29 23:09:55 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x108d5de70>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:09:55 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 400, 实际 200
+2025-12-29 23:09:55 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015288,"photoUrls":[],"tags":[]}
+2025-12-29 23:09:55 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1089c6bf0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:09:55 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 500, 实际 200
+2025-12-29 23:09:55 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015289,"photoUrls":[],"tags":[]}
+2025-12-29 23:12:17 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x104842920>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:12:17 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 400, 实际 200
+2025-12-29 23:12:17 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015307,"photoUrls":[],"tags":[]}
+2025-12-29 23:12:17 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x11003ed10>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:12:17 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 500, 实际 200
+2025-12-29 23:12:17 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015309,"photoUrls":[],"tags":[]}
+2025-12-29 23:13:07 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x105b89b10>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:13:07 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 400, 实际 200
+2025-12-29 23:13:07 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015317,"photoUrls":[],"tags":[]}
+2025-12-29 23:13:07 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x105c55e70>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:13:07 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 500, 实际 200
+2025-12-29 23:13:07 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015318,"photoUrls":[],"tags":[]}
+2025-12-29 23:13:39 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1069259f0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:13:39 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 400, 实际 200
+2025-12-29 23:13:39 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015319,"photoUrls":[],"tags":[]}
+2025-12-29 23:13:39 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x106d5ded0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:13:39 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 500, 实际 200
+2025-12-29 23:13:39 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015320,"photoUrls":[],"tags":[]}
+2025-12-29 23:16:46 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1100b2980>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:16:46 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 400, 实际 200
+2025-12-29 23:16:46 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015347,"photoUrls":[],"tags":[]}
+2025-12-29 23:16:46 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x11063ed10>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:16:46 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 500, 实际 200
+2025-12-29 23:16:46 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015348,"photoUrls":[],"tags":[]}
+2025-12-29 23:16:55 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x104e25ae0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:16:55 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 400, 实际 200
+2025-12-29 23:16:55 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015351,"photoUrls":[],"tags":[]}
+2025-12-29 23:16:55 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x104eedea0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:16:55 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 500, 实际 200
+2025-12-29 23:16:55 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015352,"photoUrls":[],"tags":[]}
+2025-12-29 23:17:25 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103d42920>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:17:25 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 400, 实际 200
+2025-12-29 23:17:25 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015369,"photoUrls":[],"tags":[]}
+2025-12-29 23:17:26 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x10483ed10>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:17:26 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 500, 实际 200
+2025-12-29 23:17:26 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015370,"photoUrls":[],"tags":[]}
+2025-12-29 23:17:27 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x11097d9f0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:17:27 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 400, 实际 200
+2025-12-29 23:17:27 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015371,"photoUrls":[],"tags":[]}
+2025-12-29 23:17:27 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x110c5ded0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:17:27 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 500, 实际 200
+2025-12-29 23:17:27 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015372,"photoUrls":[],"tags":[]}
+2025-12-29 23:34:35 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x120c21c00>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:34:35 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 400, 实际 200
+2025-12-29 23:34:35 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015568,"photoUrls":[],"tags":[]}
+2025-12-29 23:34:35 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x12325ded0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:34:35 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 500, 实际 200
+2025-12-29 23:34:35 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015569,"photoUrls":[],"tags":[]}
+2025-12-29 23:35:25 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1039729e0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:35:25 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 400, 实际 200
+2025-12-29 23:35:25 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015585,"photoUrls":[],"tags":[]}
+2025-12-29 23:35:25 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x103afece0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:35:25 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 500, 实际 200
+2025-12-29 23:35:25 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015586,"photoUrls":[],"tags":[]}
+2025-12-29 23:36:53 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x10306a920>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:36:53 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 400, 实际 200
+2025-12-29 23:36:53 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015596,"photoUrls":[],"tags":[]}
+2025-12-29 23:36:53 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1031f6d10>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:36:53 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 500, 实际 200
+2025-12-29 23:36:53 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015597,"photoUrls":[],"tags":[]}
+2025-12-29 23:40:34 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1070429e0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:40:34 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 400, 实际 200
+2025-12-29 23:40:34 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015631,"photoUrls":[],"tags":[]}
+2025-12-29 23:40:34 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x10753ece0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:40:34 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 500, 实际 200
+2025-12-29 23:40:34 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372016900015632,"photoUrls":[],"tags":[]}
+2025-12-29 23:46:48 | ERROR    | __main__:generate:396 - 生成用例时发生错误
+Traceback (most recent call last):
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/tools/generate_cases.py", line 409, in <module>
+    main()
+    └ <function main at 0x10236ea70>
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/tools/generate_cases.py", line 405, in main
+    cli()
+    └ <Group cli>
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 1157, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function BaseCommand.main at 0x1029b4ca0>
+           └ <Group cli>
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 1078, in main
+    rv = self.invoke(ctx)
+         │    │      └ <click.core.Context object at 0x102383fd0>
+         │    └ <function MultiCommand.invoke at 0x1029b5c60>
+         └ <Group cli>
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 1688, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <click.core.Context object at 0x104cd6470>
+           │               │       │       └ <function Command.invoke at 0x1029b5750>
+           │               │       └ <Command generate>
+           │               └ <click.core.Context object at 0x104cd6470>
+           └ <function MultiCommand.invoke.<locals>._process_result at 0x104d21d80>
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 1434, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'provider': 'ollama', 'model': 'llama3.2', 'spec_file': 'specs/petstore/POST__pet.json', 'type': 'security', 'count': 10, 'o...
+           │   │      │    │           └ <click.core.Context object at 0x104cd6470>
+           │   │      │    └ <function generate at 0x104d22200>
+           │   │      └ <Command generate>
+           │   └ <function Context.invoke at 0x1029b44c0>
+           └ <click.core.Context object at 0x104cd6470>
+  File "/Users/bytedance/Documents/code/api-automation-framework/venv/lib/python3.10/site-packages/click/core.py", line 783, in invoke
+    return __callback(*args, **kwargs)
+                       │       └ {'provider': 'ollama', 'model': 'llama3.2', 'spec_file': 'specs/petstore/POST__pet.json', 'type': 'security', 'count': 10, 'o...
+                       └ ()
+
+> File "/Users/bytedance/Documents/code/api-automation-framework/tools/generate_cases.py", line 337, in generate
+    result = generator.generate(api_spec, type, count)
+             │         │        │         │     └ 10
+             │         │        │         └ 'security'
+             │         │        └ {'name': 'POST /pet', 'endpoint': '/pet', 'method': 'POST', 'summary': 'Add a new pet to the store', 'description': '', 'tags...
+             │         └ <function CaseGenerator.generate at 0x104d21b40>
+             └ <ai_agent.case_generator.CaseGenerator object at 0x104d15180>
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/ai_agent/case_generator.py", line 71, in generate
+    return self.agent.generate_cases(api_spec, case_type, count)
+           │    │     │              │         │          └ 10
+           │    │     │              │         └ 'security'
+           │    │     │              └ {'name': 'POST /pet', 'endpoint': '/pet', 'method': 'POST', 'summary': 'Add a new pet to the store', 'description': '', 'tags...
+           │    │     └ <function OllamaAgent.generate_cases at 0x104d21480>
+           │    └ <ai_agent.ollama_agent.OllamaAgent object at 0x104d150f0>
+           └ <ai_agent.case_generator.CaseGenerator object at 0x104d15180>
+
+  File "/Users/bytedance/Documents/code/api-automation-framework/ai_agent/ollama_agent.py", line 70, in generate_cases
+    prompt = prompt_template.format(
+             │               └ <method 'format' of 'str' objects>
+             └ '你是一个API安全测试专家。请为以下API生成 {count} 个**安全测试用例**。\n\nAPI规格:\n{api_spec}\n\n安全测试要求：\n1. 测试认证和授权\n2. 测试注入攻击防护\n3. 测试敏感数据保护\n4. 测试越权...
+
+KeyError: '"$gt"'
+2025-12-29 23:50:15 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x1203bc850>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:50:15 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 400, 实际 200
+2025-12-29 23:50:15 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372036854755145,"photoUrls":[],"tags":[]}
+2025-12-29 23:50:15 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x121d6a740>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:50:15 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 400, 实际 200
+2025-12-29 23:50:15 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372036854755146,"photoUrls":[],"tags":[]}
+2025-12-29 23:50:15 | ERROR    | utils.reporter:report_test_execution:75 - 上报异常: HTTPSConnectionPool(host='dev-monitor.example.com', port=443): Max retries exceeded with url: /api/test-results (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x121d6baf0>: Failed to resolve 'dev-monitor.example.com' ([Errno 8] nodename nor servname provided, or not known)"))
+2025-12-29 23:50:15 | ERROR    | utils.assertions:assert_status_code:22 - ✗ 状态码断言失败: 期望状态码 400, 实际 200
+2025-12-29 23:50:15 | ERROR    | utils.assertions:assert_status_code:23 - 响应内容: {"id":9223372036854755147,"photoUrls":[],"tags":[]}

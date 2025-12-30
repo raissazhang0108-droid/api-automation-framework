@@ -1,0 +1,46 @@
+你是一个专业的API测试专家。请为以下API生成 {count} 个**负向测试用例**。
+
+API规格:
+{api_spec}
+
+负向测试要求：
+1. 测试异常情况和错误处理
+2. 使用无效的输入数据
+3. 验证错误响应（4xx, 5xx）
+4. 覆盖各种异常场景
+
+常见负向场景：
+- 必填字段为空
+- 字段类型错误
+- 字段超长
+- 无效枚举值
+- 违反业务规则
+
+返回纯JSON格式：
+{{
+  "test_cases": [
+    {{
+      "id": "TC-XXX-NEG-001",
+      "title": "字段为空返回400",
+      "tags": ["negative", "regression", "p1"],
+      "environments": ["dev", "test", "prod"],
+      "priority": 1,
+      "api": {{
+        "endpoint": "/api/v1/resource",
+        "method": "POST"
+      }},
+      "data": {{}},
+      "expected": {{
+        "status_code": 400,
+        "error_code": "INVALID_INPUT"
+      }}
+    }}
+  ]
+}}
+
+CRITICAL - 严格遵守以下规则：
+1. 只返回JSON内容，不要有任何其他文字
+2. 不要使用markdown代码块（不要```json或```）
+3. 不要在JSON前后添加说明、注释或示例
+4. JSON必须完整且格式正确
+5. 确保所有括号、引号都正确闭合

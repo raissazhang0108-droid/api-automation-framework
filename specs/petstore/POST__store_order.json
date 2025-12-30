@@ -1,0 +1,30 @@
+{
+  "name": "POST /store/order",
+  "endpoint": "/store/order",
+  "method": "POST",
+  "summary": "Place an order for a pet",
+  "description": "",
+  "tags": [
+    "store"
+  ],
+  "parameters": [
+    {
+      "name": "body",
+      "in": "body",
+      "required": true,
+      "type": null,
+      "description": "order placed for purchasing the pet"
+    }
+  ],
+  "requestBody": {},
+  "responses": {
+    "200": {
+      "description": "successful operation",
+      "schema": {}
+    },
+    "400": {
+      "description": "Invalid Order",
+      "schema": {}
+    }
+  }
+}

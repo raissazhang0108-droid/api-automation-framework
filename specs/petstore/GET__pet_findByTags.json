@@ -1,0 +1,30 @@
+{
+  "name": "GET /pet/findByTags",
+  "endpoint": "/pet/findByTags",
+  "method": "GET",
+  "summary": "Finds Pets by tags",
+  "description": "Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.",
+  "tags": [
+    "pet"
+  ],
+  "parameters": [
+    {
+      "name": "tags",
+      "in": "query",
+      "required": true,
+      "type": "array",
+      "description": "Tags to filter by"
+    }
+  ],
+  "requestBody": {},
+  "responses": {
+    "200": {
+      "description": "successful operation",
+      "schema": {}
+    },
+    "400": {
+      "description": "Invalid tag value",
+      "schema": {}
+    }
+  }
+}

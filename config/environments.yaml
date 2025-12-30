@@ -1,0 +1,62 @@
+dev:
+  api:
+    base_url: https://petstore.swagger.io/v2
+    timeout: 30
+    retry_count: 3
+    retry_delay: 1
+  auth:
+    type: bearer  # bearer, basic, api_key
+    token_endpoint: /auth/login
+  database:
+    host: dev-db.radai.com
+    port: 5432
+    name: radai_dev
+  features:
+    mock_enabled: true
+    debug_mode: true
+    strict_validation: false
+  report:
+    enabled: true
+    url: https://dev-monitor.example.com/api/test-results
+
+test:
+  api:
+    base_url: https://test-api.radai.com
+    timeout: 60
+    retry_count: 5
+    retry_delay: 2
+  auth:
+    type: bearer
+    token_endpoint: /auth/login
+  database:
+    host: test-db.radai.com
+    port: 5432
+    name: radai_test
+  features:
+    mock_enabled: false
+    debug_mode: false
+    strict_validation: true
+  report:
+    enabled: true
+    url: https://test-monitor.example.com/api/test-results
+
+prod:
+  api:
+    base_url: https://api.radai.com
+    timeout: 120
+    retry_count: 3
+    retry_delay: 3
+  auth:
+    type: bearer
+    token_endpoint: /auth/login
+  database:
+    host: prod-db.radai.com
+    port: 5432
+    name: radai_prod
+  features:
+    mock_enabled: false
+    debug_mode: false
+    strict_validation: true
+  report:
+    enabled: true
+    url: https://monitor.example.com/api/test-results

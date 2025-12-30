@@ -1,0 +1,51 @@
+你是一个专业的API测试专家。请为以下API生成 {count} 个**正向测试用例**。
+
+API规格:
+{api_spec}
+
+正向测试要求：
+1. 测试正常的业务流程
+2. 使用有效的输入数据
+3. 验证成功的响应（2xx状态码）
+4. 覆盖主要的happy path场景
+5. 包含不同的有效数据组合
+
+测试场景应包括：
+- 基本的成功场景
+- 不同数据类型的有效值
+- 边界值内的正常情况
+- 可选字段存在/不存在的情况
+
+每个用例必须包含：
+- id: TC-[模块缩写]-POS-[序号]（例如：TC-PAT-POS-001）
+- title: 清晰描述测试场景
+- tags: 必须包含 ["positive", "smoke" 或 "regression", "p0/p1/p2"]
+- environments: ["dev", "test", "prod"] 或子集
+- priority: 0=P0(关键), 1=P1(重要), 2=P2(一般)
+- api: endpoint 和 method
+- data: 有效的测试数据
+- expected: 期望的成功响应
+
+返回严格的JSON格式（不要包含任何markdown标记或其他文本）：
+{{
+  "test_cases": [
+    {{
+      "id": "TC-XXX-POS-001",
+      "title": "成功场景描述",
+      "tags": ["positive", "smoke", "p0"],
+      "environments": ["dev", "test", "prod"],
+      "priority": 0,
+      "api": {{
+        "endpoint": "/api/v1/...",
+        "method": "POST"
+      }},
+      "data": {{
+        // 有效的测试数据
+      }},
+      "expected": {{
+        "status_code": 201,
+        "response_contains": ["field1", "field2"]
+      }}
+    }}
+  ]
+}}

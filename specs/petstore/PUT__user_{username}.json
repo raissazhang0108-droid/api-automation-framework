@@ -1,0 +1,37 @@
+{
+  "name": "PUT /user/{username}",
+  "endpoint": "/user/{username}",
+  "method": "PUT",
+  "summary": "Updated user",
+  "description": "This can only be done by the logged in user.",
+  "tags": [
+    "user"
+  ],
+  "parameters": [
+    {
+      "name": "username",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "name that need to be updated"
+    },
+    {
+      "name": "body",
+      "in": "body",
+      "required": true,
+      "type": null,
+      "description": "Updated user object"
+    }
+  ],
+  "requestBody": {},
+  "responses": {
+    "400": {
+      "description": "Invalid user supplied",
+      "schema": {}
+    },
+    "404": {
+      "description": "User not found",
+      "schema": {}
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "name": "GET /pet/{petId}",
+  "endpoint": "/pet/{petId}",
+  "method": "GET",
+  "summary": "Find pet by ID",
+  "description": "Returns a single pet",
+  "tags": [
+    "pet"
+  ],
+  "parameters": [
+    {
+      "name": "petId",
+      "in": "path",
+      "required": true,
+      "type": "integer",
+      "description": "ID of pet to return"
+    }
+  ],
+  "requestBody": {},
+  "responses": {
+    "200": {
+      "description": "successful operation",
+      "schema": {}
+    },
+    "400": {
+      "description": "Invalid ID supplied",
+      "schema": {}
+    },
+    "404": {
+      "description": "Pet not found",
+      "schema": {}
+    }
+  }
+}

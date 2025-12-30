@@ -1,0 +1,26 @@
+{
+  "name": "POST /pet",
+  "endpoint": "/pet",
+  "method": "POST",
+  "summary": "Add a new pet to the store",
+  "description": "",
+  "tags": [
+    "pet"
+  ],
+  "parameters": [
+    {
+      "name": "body",
+      "in": "body",
+      "required": true,
+      "type": null,
+      "description": "Pet object that needs to be added to the store"
+    }
+  ],
+  "requestBody": {},
+  "responses": {
+    "405": {
+      "description": "Invalid input",
+      "schema": {}
+    }
+  }
+}
