@@ -2,6 +2,7 @@
 
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![pytest](https://img.shields.io/badge/pytest-7.4+-green.svg)](https://pytest.org/)
+[![API Tests](https://github.com/raissazhang0108-droid/api-automation-framework/actions/workflows/tests.yml/badge.svg)](https://github.com/raissazhang0108-droid/api-automation-framework/actions)
 
 A Python / pytest framework for API testing. It uses an LLM to draft test cases from an API spec, runs them with `requests` + pytest, and suggests fixes for failing tests. All suggested fixes are meant to be reviewed by a human before they are applied.
 
