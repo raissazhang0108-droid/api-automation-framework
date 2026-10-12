@@ -210,3 +210,5 @@ Generated security cases cover SQL injection, NoSQL injection, XSS, path travers
 ## Author
 
 Raissa Zhang, QA engineer. raissazhang0108@gmail.com
+
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
